@@ -122,6 +122,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITiledSprite.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
+     <Compile Include="Assets\_Scripts\PlatformController.cs" />
      <Compile Include="Assets\ex2D\_demo\Scripts\Player.cs" />
      <Compile Include="Assets\ex2D\_demo\Scripts\ScrollView.cs" />
      <Compile Include="Assets\ex2D\_demo\Scripts\SpAnimEventHandle.cs" />
