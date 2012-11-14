@@ -18,6 +18,8 @@ public class PlatformController : MonoBehaviour
 	private bool _grounded = false;
 	private float _startingY;
 	
+	private bool _isOn = true;
+	
 	void Start ()
 	{
 		_startingY = transform.position.y;
@@ -44,9 +46,9 @@ public class PlatformController : MonoBehaviour
 		}
 		else
 		{
-			if (_grounded &&
-				((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && transform.position.y < _startingY + 1) ||
-				((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && transform.position.y > _startingY - 1))
+			if (_isOn && _grounded &&
+				(((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && transform.position.y < _startingY + 1) ||
+				((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && transform.position.y > _startingY - 1)))
 			{
 				if (Input.GetAxis("Vertical") > 0)
 				{
@@ -63,7 +65,11 @@ public class PlatformController : MonoBehaviour
 			else
 			{
 				// Calculate how fast we should be moving
-				Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+				Vector3 targetVelocity = Vector3.zero;
+				
+				if (_isOn)
+					targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+				
 				targetVelocity *= Speed;
 		 
 			 	// Apply a force that attempts to reach our target velocity
@@ -74,7 +80,7 @@ public class PlatformController : MonoBehaviour
 				rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 				
 				// Jump
-				if (_grounded && Input.GetButton("Jump"))
+				if (_isOn && _grounded && Input.GetButton("Jump"))
 				{
 					rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
 					_grounded = false;
@@ -86,8 +92,9 @@ public class PlatformController : MonoBehaviour
 					rigidbody.AddForce(new Vector3 (0, -Gravity * rigidbody.mass, 0));
 				}
 				
-				if ((Input.GetAxis("Horizontal") < 0 && transform.localScale.x > 0) ||
-					(Input.GetAxis("Horizontal") > 0 && transform.localScale.x < 0))
+				if (_isOn &&
+					((Input.GetAxis("Horizontal") < 0 && transform.localScale.x > 0) ||
+					 (Input.GetAxis("Horizontal") > 0 && transform.localScale.x < 0)))
 				{
 					Vector3 scale = transform.localScale;
 					scale.x *= -1;
@@ -105,5 +112,10 @@ public class PlatformController : MonoBehaviour
 	float CalculateJumpVerticalSpeed ()
 	{
 		return Mathf.Sqrt(2 * JumpHeight);
+	}
+	
+	public void ToggleOnOff()
+	{
+		_isOn = !_isOn;
 	}
 }
