@@ -14,6 +14,11 @@ public class Dialogue : MonoBehaviour
 	
 	private DialogueResponse _originalDialogue;
 	
+	private List<string> _conversation;
+	
+	private Vector2 _conversationScrollPos = Vector2.zero;
+	private bool _updateScrollPos = false;
+	
 	private bool _inRange = false;
 	private bool _talking = false;
 	private Rect talkWindowRect = new Rect(10, Screen.height - 200, 300, 300);
@@ -120,6 +125,9 @@ public class Dialogue : MonoBehaviour
 			if (GUI.Button(new Rect(screenPos.x - 19, screenPos.y + 20, 38, 18), "Talk"))
 			{
 				_talking = true;
+				_conversation = new List<string>();
+				_conversation.Add(NPCName + ": " + DialogueShown.NPCResponse);
+				_updateScrollPos = true;
 				PlayerCharacter.GetComponent<PlatformController>().ToggleOnOff();
 			}
 		}
@@ -138,16 +146,42 @@ public class Dialogue : MonoBehaviour
 		
 		GUI.Box(talkWindowRect, "", style);
 		
-		int yCount = Response(DialogueShown, 0, 0);
+		GUI.DrawTexture(new Rect(15, talkWindowRect.y - 65, 50, 50), NPCPortrait);
+		
+		if (_conversation.Count * 25 > talkWindowRect.y - 125)
+			_conversationScrollPos = new Vector2(0, GUI.VerticalScrollbar(new Rect(50, 75, 30, talkWindowRect.y - 150), _conversationScrollPos.y, talkWindowRect.y - 125, 0, _conversation.Count * 25));
+		GUI.BeginScrollView(new Rect(75, 50 + Mathf.Max(0, talkWindowRect.y - 125 - _conversation.Count * 25), Screen.width, talkWindowRect.y - 125), _conversationScrollPos, new Rect(0, 0, Screen.width - 75, _conversation.Count * 25));
+		
+		for (int i = 0; i < _conversation.Count; i++)
+		{
+			if (i == _conversation.Count - 1)
+			{
+				GUI.EndScrollView();
+				GUI.Box(new Rect(75, talkWindowRect.y - 27 - 25 * (_conversation.Count - i), GUI.skin.box.CalcSize(new GUIContent(_conversation[i])).x, 25), _conversation[i]);
+			}
+			else
+			{
+				GUI.skin.box.normal.textColor = Color.grey;
+				GUI.Box(new Rect(0, 25 * (i + 1), GUI.skin.box.CalcSize(new GUIContent(_conversation[i])).x, 25), _conversation[i]);
+				GUI.skin.box.normal.textColor = Color.white;
+			}
+		}
+		
+		bool updateScrollPos = _updateScrollPos;
+		_updateScrollPos = false;
+		
+		int yCount = Response(DialogueShown, 0, 0);	
 		
 		talkWindowRect = new Rect(10, Screen.height - yCount * 25 - 20, Screen.width - 20, yCount * 25 + 10);
+		
+		if (updateScrollPos)
+		{
+			_conversationScrollPos = new Vector2(0, _conversation.Count * 25);
+		}
 	}
 	
 	int Response(DialogueResponse currentResponse, int xCount, int yCount)
 	{
-		GUI.DrawTexture(new Rect(15, talkWindowRect.y - 65, 50, 50), NPCPortrait);
-		GUI.Box(new Rect(75, talkWindowRect.y - 52, GUI.skin.box.CalcSize(new GUIContent(NPCName + ": " + currentResponse.NPCResponse)).x, 25), NPCName + ": " + currentResponse.NPCResponse);
-		
 		foreach (DialogueNode dn in currentResponse.SubNodes)
 		{
 			DialogueNode newDN = new DialogueNode();
@@ -168,71 +202,79 @@ public class Dialogue : MonoBehaviour
 			for (int i = 0; i < currentNode.SubNodes.Count; i++)
 			{
 				string nodeText = currentNode.SubNodes[i].Text;
+				string actualText = nodeText;
 				float xPos = 0;
 				int selectedItemIndex = 1;
 				
 				if (nodeText.Contains("*character/item/place/group*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*character/item/place/group*", "                         ");
+					actualText = actualText.Replace("*character/item/place/group*", cbList_char_item_place_group[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_char_item_place_group);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*healer/shopkeeper/..*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*healer/shopkeeper/..*", "                         ");
+					actualText = actualText.Replace("*healer/shopkeeper/..*", cbList_healer_shopkeeper[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_healer_shopkeeper);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*character/item*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*character/item*", "                         ");
+					actualText = actualText.Replace("*character/item*", cbList_char_item[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_char_item);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*character*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*character*", "                         ");
+					actualText = actualText.Replace("*character*", cbList_char[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_char);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*item*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*item*", "                         ");
+					actualText = actualText.Replace("*item*", cbList_item[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_item);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*place/group*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*place/group*", "                         ");
+					actualText = actualText.Replace("*place/group*", cbList_place_group[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_place_group);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 				else if (nodeText.Contains("*event*"))
 				{
+					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 					xPos = GUI.skin.box.CalcSize(new GUIContent(nodeText.Substring(0, nodeText.IndexOf('*')))).x;
 					nodeText = nodeText.Replace("*event*", "                         ");
+					actualText = actualText.Replace("*event*", cbList_event[selectedItemIndex].text);
 					_comboBoxes.Add(currentNode.SubNodes[i].comboBoxControl);
 					_comboRects.Add(new Rect(35 + xPos + xCount * 20 + talkWindowRect.x, 5 + yCount * 25 + talkWindowRect.y, 100, 25));
 					_comboLists.Add(cbList_event);
-					selectedItemIndex = currentNode.SubNodes[i].comboBoxControl.GetSelectedItemIndex();
 				}
 					
 				string buttonText = "+";
@@ -255,6 +297,9 @@ public class Dialogue : MonoBehaviour
 						{
 							DialogueShown = _originalDialogue;
 						}
+						_conversation.Add("You: " + actualText);
+						_conversation.Add(NPCName + ": " + DialogueShown.NPCResponse);
+						_updateScrollPos = true;
 					}
 					else
 					{
