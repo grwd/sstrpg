@@ -24,10 +24,24 @@ public class PlatformController : MonoBehaviour
 	
 	private int _laneNumber = 4;
 	
+	private float _frames;
+	
 	void Start ()
 	{
+		Application.targetFrameRate = 30;
+		
 		_startingY = transform.position.y;
 		_ground = Ground.GetComponent<GroundStatus>();
+	}
+	
+	void Update()
+	{
+		_frames++;
+	}
+	
+	void OnGUI()
+	{
+		GUI.Label(new Rect(10, 10, 200, 100), (_frames / Time.time).ToString());
 	}
 	
 	void FixedUpdate()
