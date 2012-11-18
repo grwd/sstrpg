@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 373f8887d176d4f708c3584ecb23c19e
+=======
+guid: 4671f3edd4647ed44a7eb966824b709e
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
 guid: 4671f3edd4647ed44a7eb966824b709e
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
@@ -9,7 +13,11 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     enableMipMap: 0
+=======
+    enableMipMap: 1
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
     enableMipMap: 1
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
@@ -25,6 +33,7 @@ TextureImporter:
     heightScale: .25
     normalMapFilter: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -37,6 +46,8 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
 =======
+=======
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -48,6 +59,9 @@ TextureImporter:
     mipBias: -1
     wrapMode: -1
   nPOTScale: 1
+<<<<<<< HEAD
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   lightmap: 0
   compressionQuality: 50

@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 667614c8e2fdf458486ffcd36e3dfb30
+=======
+guid: f0d44b942616c4a4d9eadc01124b6553
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
 guid: f0d44b942616c4a4d9eadc01124b6553
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
@@ -21,6 +25,7 @@ TextureImporter:
     heightScale: .25
     normalMapFilter: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -36,6 +41,8 @@ TextureImporter:
   compressionQuality: 50
   textureType: 5
 =======
+=======
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -50,5 +57,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   textureType: -1
+<<<<<<< HEAD
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   buildTargetSettings: []

@@ -26,7 +26,11 @@ TextureImporter:
     aniso: -1
     mipBias: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     wrapMode: -1
+=======
+    wrapMode: 1
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
     wrapMode: 1
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659

@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: ac188e46d13134d9f80e7a9f86d7c96f
+=======
+guid: 15ae4af2aafc4d4488f3758fd197d098
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
 guid: 15ae4af2aafc4d4488f3758fd197d098
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
@@ -9,7 +13,11 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     enableMipMap: 0
+=======
+    enableMipMap: 1
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 =======
     enableMipMap: 1
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
@@ -28,6 +36,7 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
@@ -40,6 +49,8 @@ TextureImporter:
   compressionQuality: 50
   textureType: 5
 =======
+=======
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
@@ -51,5 +62,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   textureType: -1
+<<<<<<< HEAD
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
 >>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   buildTargetSettings: []
