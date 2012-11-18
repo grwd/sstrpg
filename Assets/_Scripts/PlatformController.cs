@@ -10,6 +10,8 @@ public class PlatformController : MonoBehaviour
 	
 	public Transform Ground;
 	
+	private GroundStatus _ground;
+	
 	private bool _changingLanesUp = false;
 	private bool _changingLanesDown = false;
 	private Vector3 _newLanePos;
@@ -20,9 +22,12 @@ public class PlatformController : MonoBehaviour
 	
 	private bool _isOn = true;
 	
+	private int _laneNumber = 4;
+	
 	void Start ()
 	{
 		_startingY = transform.position.y;
+		_ground = Ground.GetComponent<GroundStatus>();
 	}
 	
 	void FixedUpdate()
@@ -46,19 +51,24 @@ public class PlatformController : MonoBehaviour
 		}
 		else
 		{
-			if (_isOn && _grounded &&
-				(((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && transform.position.y < _startingY + 1) ||
-				((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && transform.position.y > _startingY - 1)))
+			if (_isOn && _grounded && !Input.GetMouseButton(0) &&
+				(((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && _laneNumber > 0) || //transform.position.y < _startingY + 1) ||
+				((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && _laneNumber < 8))) // && transform.position.y > _startingY - 1.5f)))
 			{
+				int oldLaneNumber = _laneNumber;
 				if (Input.GetAxis("Vertical") > 0)
 				{
 					_changingLanesUp = true;
-					_newLanePos = transform.position + Ground.forward * 0.75f;
+					_laneNumber--;
+					_newLanePos = transform.position + Ground.forward * Vector3.Distance(_ground.Lanes[_laneNumber].position, _ground.Lanes[oldLaneNumber].position);
+					//_newLanePos = transform.position + Ground.forward * 0.75f;
 				}
 				else if (Input.GetAxis("Vertical") < 0)
 				{
 					_changingLanesDown = true;
-					_newLanePos = transform.position + Ground.forward * -0.75f;
+					_laneNumber++;
+					_newLanePos = transform.position - Ground.forward * Vector3.Distance(_ground.Lanes[_laneNumber].position, _ground.Lanes[oldLaneNumber].position);
+					//_newLanePos = transform.position + Ground.forward * -0.75f;
 				}
 				rigidbody.isKinematic = true;
 			}
@@ -67,7 +77,7 @@ public class PlatformController : MonoBehaviour
 				// Calculate how fast we should be moving
 				Vector3 targetVelocity = Vector3.zero;
 				
-				if (_isOn)
+				if (_isOn && !Input.GetMouseButton(0))
 					targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 				
 				targetVelocity *= Speed;
@@ -80,7 +90,7 @@ public class PlatformController : MonoBehaviour
 				rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
 				
 				// Jump
-				if (_isOn && _grounded && Input.GetButton("Jump"))
+				if (_isOn && _grounded && Input.GetButton("Jump") && !Input.GetMouseButton(0))
 				{
 					rigidbody.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
 					_grounded = false;
@@ -92,9 +102,17 @@ public class PlatformController : MonoBehaviour
 					rigidbody.AddForce(new Vector3 (0, -Gravity * rigidbody.mass, 0));
 				}
 				
-				if (_isOn &&
+				if (_isOn && !Input.GetMouseButton(0) &&
 					((Input.GetAxis("Horizontal") < 0 && transform.localScale.x > 0) ||
 					 (Input.GetAxis("Horizontal") > 0 && transform.localScale.x < 0)))
+				{
+					Vector3 scale = transform.localScale;
+					scale.x *= -1;
+					transform.localScale = scale;
+				}
+				else if (_isOn && Input.GetMouseButton(0) &&
+					((Input.mousePosition.x < Screen.width / 2 && transform.localScale.x > 0) ||
+					 (Input.mousePosition.x > Screen.width / 2 && transform.localScale.x < 0)))
 				{
 					Vector3 scale = transform.localScale;
 					scale.x *= -1;

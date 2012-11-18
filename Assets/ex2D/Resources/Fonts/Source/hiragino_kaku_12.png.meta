@@ -1,10 +1,26 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: 8676569fe501140779facf5dea180b65
+=======
 guid: 65b285f3819970a46be59fe2c9d14a5b
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
+guid: 65b285f3819970a46be59fe2c9d14a5b
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
 TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+    enableMipMap: 0
+=======
     enableMipMap: 1
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
+    enableMipMap: 1
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -16,6 +32,25 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  textureType: 5
+=======
+=======
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -30,4 +65,8 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   textureType: -1
+<<<<<<< HEAD
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
+=======
+>>>>>>> 3bae307bfc709575e43af48cfa0f554443273659
   buildTargetSettings: []
