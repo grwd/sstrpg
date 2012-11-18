@@ -1,6 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/Dialogue.cs">
+    <Files>
+      <File FileName="Assets/_Scripts/PlatformController.cs" Line="124" Column="2" />
+      <File FileName="Assets/_Scripts/Dialogue.cs" Line="125" Column="57" />
+      <File FileName="Assets/_Scripts/ComboBox.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/Lane.cs" Line="4" Column="19" />
+      <File FileName="Assets/_Scripts/GroundStatus.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

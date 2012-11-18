@@ -10,3 +10,5 @@ Library/ScriptMapper
 Library/cache/
 Assembly-CSharp.pidb
 Library/ScriptMapper
+Library/ScriptAssemblies/Assembly-CSharp.dll.mdb
+Library/ScriptAssemblies/Assembly-CSharp.dll
