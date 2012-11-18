@@ -5,6 +5,8 @@ Project("{B69C78E5-F80F-4EE8-0ABE-68AA89D7AA92}") = "sstrpg", "Assembly-CSharp-f
 EndProject
 Project("{B69C78E5-F80F-4EE8-0ABE-68AA89D7AA92}") = "sstrpg", "Assembly-CSharp-vs.csproj", "{6F0AC42C-37A6-BECD-6CF7-D8105F48F0AF}"
 EndProject
+Project("{B69C78E5-F80F-4EE8-0ABE-68AA89D7AA92}") = "sstrpg", "Assembly-CSharp-Editor-vs.csproj", "{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{6F0AC42C-37A6-BECD-6CF7-D8105F48F0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F0AC42C-37A6-BECD-6CF7-D8105F48F0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F0AC42C-37A6-BECD-6CF7-D8105F48F0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																					GlobalSection(MonoDevelopProperties) = preSolution
+																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
