@@ -1,2 +1,0 @@
-Assets/NGUI/Examples/Atlases/Wooden/Arimo14.txt
-Assets/ex2D/Resources/Fonts/Source/hiragino_kaku_15.mat
