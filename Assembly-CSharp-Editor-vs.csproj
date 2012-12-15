@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{A942E6DA-3D2F-B74E-AA66-DDF6D3D07BBD}</ProjectGuid>
+	<ProjectGuid>{9F06E9F2-5252-129C-9DF4-2B744E01BEAC}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>/Applications/Unity 3/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>/Applications/Unity 3/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -158,30 +158,30 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
- <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
+ <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
- <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript">
+ <Reference Include="Assembly-UnityScript">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
  </Reference>
- <Reference Include="Assets\ex2D\Core\ex2D.Runtime">
+ <Reference Include="ex2D.Runtime">
  <HintPath>Assets\ex2D\Core\ex2D.Runtime.dll</HintPath>
  </Reference>
- <Reference Include="Assets\ex2D\Editor\ex2D.Editor">
+ <Reference Include="ex2D.Editor">
  <HintPath>Assets\ex2D\Editor\ex2D.Editor.dll</HintPath>
  </Reference>
- <Reference Include="Assets\NGUI\DLLs\NGUI">
+ <Reference Include="NGUI">
  <HintPath>Assets\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
- <Reference Include="Assets\NGUI\DLLs\Editor\NGUI_Editor">
+ <Reference Include="NGUI_Editor">
  <HintPath>Assets\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{32625CCE-3A86-D1E7-6205-F7B065FA2B30}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{FF26DC59-5F3A-1A2F-6E73-33D83A7E27C3}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{E464D892-20EC-4028-D187-E989B10327F6}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+      <Project>{6F0AC42C-37A6-BECD-6CF7-D8105F48F0AF}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
