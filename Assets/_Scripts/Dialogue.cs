@@ -128,7 +128,7 @@ public class Dialogue : MonoBehaviour
 				_conversation = new List<string>();
 				_conversation.Add(NPCName + ": " + DialogueShown.NPCResponse);
 				_updateScrollPos = true;
-				PlayerCharacter.GetComponent<PlatformController>().ToggleOnOff();
+				PlayerCharacter.GetComponent<FreePlatformController>().ToggleOnOff();
 			}
 		}
 	}

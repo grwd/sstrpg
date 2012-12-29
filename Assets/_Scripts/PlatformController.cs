@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 
 public class PlatformController : MonoBehaviour
@@ -8,23 +8,7 @@ public class PlatformController : MonoBehaviour
 	public float Gravity = 10.0f;
 	public float JumpHeight = 2.0f;
 	
-	public Transform Ground;
-	
-	private GroundStatus _ground;
-	
-	private bool _changingLanesUp = false;
-	private bool _changingLanesDown = false;
-	private Vector3 _newLanePos;
-	private float _changeLaneTimer;
-	
 	private bool _grounded = false;
-	private float _startingY;
-	
-	private bool _isOn = true;
-	
-	private int _laneNumber = 4;
-	
-	private float _frames;
 	
 	void Start ()
 	{
@@ -150,4 +134,4 @@ public class PlatformController : MonoBehaviour
 	{
 		_isOn = !_isOn;
 	}
-}
+}*/

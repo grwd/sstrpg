@@ -8,36 +8,9 @@ public class FreePlatformController : MonoBehaviour
 	public float Gravity = 10.0f;
 	public float JumpHeight = 2.0f;
 	
-	public Transform Ground;
-	
-	private bool _changingLanesUp = false;
-	private bool _changingLanesDown = false;
-	private Vector3 _newLanePos;
-	private float _changeLaneTimer;
-	
 	private bool _grounded = false;
-	private float _startingY;
 	
 	private bool _isOn = true;
-	
-	private int _laneNumber = 4;
-	
-	private float _frames;
-	
-	void Start ()
-	{
-		Application.targetFrameRate = 30;
-	}
-	
-	void Update()
-	{
-		_frames++;
-	}
-	
-	void OnGUI()
-	{
-		GUI.Label(new Rect(10, 10, 200, 100), (_frames / Time.time).ToString());
-	}
 	
 	void FixedUpdate()
 	{
@@ -47,7 +20,7 @@ public class FreePlatformController : MonoBehaviour
 		if (_isOn && !Input.GetMouseButton(0))
 		{
 			targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-			targetVelocity += Input.GetAxis("Vertical") * Ground.transform.forward;
+			targetVelocity += Input.GetAxis("Vertical") * Vector3.forward;
 		}
 		
 		targetVelocity *= Speed;
