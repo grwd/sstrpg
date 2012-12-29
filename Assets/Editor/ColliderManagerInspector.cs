@@ -14,7 +14,7 @@ public class ColliderManagerInspector : Editor
 		{
 			GUI.backgroundColor = Color.red;
 			
-			EditorGUILayout.HelpBox("Hold down ALT to create FRONT/BACK colliders. Hold down SHIFT to draw straight lines. Hold down CTRL to snap to nearest point.", MessageType.Info);
+			EditorGUILayout.HelpBox("Click sceneview to add new points. Hold down ALT to create FRONT/BACK colliders. Hold down SHIFT to align with grid. Hold down CTRL to snap to nearest point.", MessageType.Info);
 		}
 		else
 		{

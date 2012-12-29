@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(WaypointController))]
 public class WaypointControllerInspector : Editor
@@ -8,11 +9,14 @@ public class WaypointControllerInspector : Editor
 	{
 		WaypointController waypointController = (WaypointController)target;
 		
+		if (waypointController.Waypoints == null)
+			waypointController.Waypoints = new List<WaypointController.Waypoint>();
+		
 		if (waypointController.AddingWaypoints)
 		{
 			GUI.backgroundColor = Color.red;
 			
-			EditorGUILayout.HelpBox("Click sceneview to add a new waypoint.", MessageType.Info);
+			EditorGUILayout.HelpBox("Click sceneview to add new waypoints. Hold down SHIFT to align with grid. Hold down CTRL to snap to nearest point.", MessageType.Info);
 		}
 		else
 		{
@@ -34,6 +38,7 @@ public class WaypointControllerInspector : Editor
 		else if (waypointController.AddingWaypoints && GUILayout.Button("Stop Adding Waypoints"))
 		{
 			waypointController.AddingWaypoints = false;
+			waypointController.HelperPoint = null;
 		}
 		
 		GUI.backgroundColor = Color.white;	
@@ -65,6 +70,8 @@ public class WaypointControllerInspector : Editor
 			{
 				deleteWP = waypointController.Waypoints[i];
 			}
+			
+			EditorGUILayout.LabelField("x: " + waypointController.Waypoints[i].Position.x + " z: " + waypointController.Waypoints[i].Position.z);
 			
 			EditorGUILayout.EndHorizontal();
 		}
@@ -182,10 +189,6 @@ public class WaypointControllerInspector : Editor
 					
 					Repaint();
 				}
-			}
-			else
-			{
-				Debug.Log("camera is null");
 			}
 		}
 	}

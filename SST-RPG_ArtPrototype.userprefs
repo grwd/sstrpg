@@ -1,13 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/WaypointController.cs">
+    <Files>
+      <File FileName="Assets/_Scripts/WaypointController.cs" Line="68" Column="3" />
+      <File FileName="Assets/Editor/WaypointControllerInspector.cs" Line="145" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="_Scripts" expanded="True">
-                <Node name="TestController.cs" selected="True" />
+                <Node name="WaypointController.cs" selected="True" />
               </Node>
             </Node>
           </Node>

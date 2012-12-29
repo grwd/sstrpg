@@ -9,7 +9,7 @@ public class WaypointController : MonoBehaviour
 	public bool AddingWaypoints;
 	
 	[SerializeField]
-	public List<Waypoint> Waypoints = new List<Waypoint>();
+	public List<Waypoint> Waypoints;
 	
 	public Waypoint HelperPoint;
 	
@@ -23,31 +23,38 @@ public class WaypointController : MonoBehaviour
 	
 	void OnDrawGizmosSelected()
 	{
-		Gizmos.color = Color.yellow;
-		
-		for (int i = 0; i < Waypoints.Count; i++)
+		if (Waypoints != null)
 		{
-			Gizmos.DrawSphere(Waypoints[i].Position, 0.2f);
-			TextGizmo.Instance.DrawText(SceneView.lastActiveSceneView.camera, Waypoints[i].Position, i);
+			Gizmos.color = Color.yellow;
 			
-			if (i > 0)
+			for (int i = 0; i < Waypoints.Count; i++)
 			{
-				Gizmos.DrawLine(Waypoints[i].Position, Waypoints[i - 1].Position);
+				Gizmos.DrawSphere(Waypoints[i].Position, 0.2f);
+				TextGizmo.Instance.DrawText(SceneView.lastActiveSceneView.camera, Waypoints[i].Position, i);
+				
+				if (i > 0)
+				{
+					Gizmos.DrawLine(Waypoints[i].Position, Waypoints[i - 1].Position);
+				}
+				else
+				{
+					Gizmos.DrawLine(Waypoints[i].Position, transform.position);
+				}
 			}
-			else
-			{
-				Gizmos.DrawLine(Waypoints[i].Position, transform.position);
-			}
-		}
-		
-		if (HelperPoint != null)
-		{
-			Gizmos.DrawSphere(HelperPoint.Position, 0.2f);
-			TextGizmo.Instance.DrawText(SceneView.lastActiveSceneView.camera, HelperPoint.Position, Waypoints.Count);
 			
-			if (Waypoints.Count > 0)
+			if (HelperPoint != null && AddingWaypoints)
 			{
-				Gizmos.DrawLine(HelperPoint.Position, Waypoints[Waypoints.Count - 1].Position);
+				Gizmos.DrawSphere(HelperPoint.Position, 0.2f);
+				TextGizmo.Instance.DrawText(SceneView.lastActiveSceneView.camera, HelperPoint.Position, Waypoints.Count);
+				
+				if (Waypoints.Count > 0)
+				{
+					Gizmos.DrawLine(HelperPoint.Position, Waypoints[Waypoints.Count - 1].Position);
+				}
+				else
+				{
+					Gizmos.DrawLine(HelperPoint.Position, transform.position);
+				}
 			}
 		}
 	}
@@ -55,9 +62,9 @@ public class WaypointController : MonoBehaviour
 	[System.Serializable]
 	public class Waypoint
 	{
-		public Vector3 Position { get; set; }
-		public string Name { get; set; }
-		public int ActionType { get; set; }
+		public Vector3 Position;
+		public string Name;
+		public int ActionType;
 		
 		public Waypoint(Vector3 position, string name)
 		{
