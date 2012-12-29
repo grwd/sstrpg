@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DepthSorting : MonoBehaviour
+public class DepthSortEnvironment : MonoBehaviour
 {
 	private Transform _player;
 	private Transform _front;
@@ -13,11 +13,11 @@ public class DepthSorting : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		_infrontPos = new Vector3(transform.position.x, 15, transform.position.z);
+		/*_infrontPos = new Vector3(transform.position.x, 15, transform.position.z);
 		_behindPos = new Vector3(transform.position.x, 13, transform.position.z);
 			
 		TestController p = FindObjectOfType(typeof(TestController)) as TestController;
-		_player = p.transform;
+		_player = p.transform;*/
 		
 		for (int i = 0; i < transform.GetChildCount(); i++)
 		{
@@ -29,10 +29,19 @@ public class DepthSorting : MonoBehaviour
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	public Transform GetFrontTransform()
 	{
-		Debug.Log("player z: " + _player.position.z + " | front z: " + _front.position.z);
+		return _front;
+	}
+	
+	public Transform GetBackTransform()
+	{
+		return _back;
+	}
+	
+	/*void Update () 
+	{
+		//Debug.Log("player z: " + _player.position.z + " | front z: " + _front.position.z);
 		
 		if (_player.position.z < _front.position.z)
 		{
@@ -50,5 +59,5 @@ public class DepthSorting : MonoBehaviour
 		{
 			transform.position = _infrontPos;
 		}
-	}
+	}*/
 }

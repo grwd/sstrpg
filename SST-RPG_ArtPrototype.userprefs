@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/WaypointController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/DepthSortingManager.cs">
     <Files>
-      <File FileName="Assets/_Scripts/WaypointController.cs" Line="68" Column="3" />
-      <File FileName="Assets/Editor/WaypointControllerInspector.cs" Line="145" Column="1" />
+      <File FileName="Assets/_Scripts/DepthSortingManager.cs" Line="28" Column="106" />
+      <File FileName="Assets/_Scripts/DepthSortEnvironment.cs" Line="16" Column="5" />
+      <File FileName="Assets/_Scripts/DepthSortObject.cs" Line="7" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,13 +12,8 @@
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="_Scripts" expanded="True">
-                <Node name="WaypointController.cs" selected="True" />
+                <Node name="DepthSortingManager.cs" selected="True" />
               </Node>
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Editor" expanded="True" />
             </Node>
           </Node>
         </State>

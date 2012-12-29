@@ -115,9 +115,9 @@ public class ColliderManagerInspector : Editor
 			// shift modifier for making straight lines (along x or z axis)
 			else if (Event.current.shift && colliderManager.Points.Count > 0)
 			{
-				if (Mathf.Abs(point.x - colliderManager.Points[colliderManager.Points.Count - 1].Point.x + ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.45f)) < Mathf.Abs(point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z))
+				if (Mathf.Abs(point.x - colliderManager.Points[colliderManager.Points.Count - 1].Point.x + ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.4142f)) < Mathf.Abs(point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z))
 				{
-					point.x = colliderManager.Points[colliderManager.Points.Count - 1].Point.x - ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.45f);
+					point.x = colliderManager.Points[colliderManager.Points.Count - 1].Point.x - ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.4142f);
 				}
 				else
 				{
@@ -179,9 +179,9 @@ public class ColliderManagerInspector : Editor
 				// shift modifier for making straight lines (along x or z axis)
 				else if (Event.current.shift && colliderManager.Points.Count > 0)
 				{
-					if (Mathf.Abs(point.x - colliderManager.Points[colliderManager.Points.Count - 1].Point.x + ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.45f)) < Mathf.Abs(point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z))
+					if (Mathf.Abs(point.x - colliderManager.Points[colliderManager.Points.Count - 1].Point.x + ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.4142f)) < Mathf.Abs(point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z))
 					{
-						point.x = colliderManager.Points[colliderManager.Points.Count - 1].Point.x - ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.45f);
+						point.x = colliderManager.Points[colliderManager.Points.Count - 1].Point.x - ((point.z - colliderManager.Points[colliderManager.Points.Count - 1].Point.z) * 2.4142f);
 					}
 					else
 					{

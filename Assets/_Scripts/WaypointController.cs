@@ -13,6 +13,26 @@ public class WaypointController : MonoBehaviour
 	
 	public Waypoint HelperPoint;
 	
+	public float Speed = 1f;
+	
+	private int _currentWpIndex;
+	
+	void Update ()
+	{
+		if (Application.isPlaying)
+		{
+			if (_currentWpIndex < Waypoints.Count)
+			{
+				transform.position = Vector3.MoveTowards(transform.position, Waypoints[_currentWpIndex].Position, Speed * Time.deltaTime);
+				
+				if (transform.position == Waypoints[_currentWpIndex].Position)
+				{
+					_currentWpIndex++;
+				}
+			}
+		}
+	}
+	
 	void OnRenderObject ()
 	{
 		if (AddingWaypoints)
@@ -21,7 +41,7 @@ public class WaypointController : MonoBehaviour
 		}
 	}
 	
-	void OnDrawGizmosSelected()
+	void OnDrawGizmosSelected ()
 	{
 		if (Waypoints != null)
 		{
@@ -36,7 +56,7 @@ public class WaypointController : MonoBehaviour
 				{
 					Gizmos.DrawLine(Waypoints[i].Position, Waypoints[i - 1].Position);
 				}
-				else
+				else if (!Application.isPlaying || _currentWpIndex == 0)
 				{
 					Gizmos.DrawLine(Waypoints[i].Position, transform.position);
 				}
@@ -66,7 +86,7 @@ public class WaypointController : MonoBehaviour
 		public string Name;
 		public int ActionType;
 		
-		public Waypoint(Vector3 position, string name)
+		public Waypoint (Vector3 position, string name)
 		{
 			Position = position;
 			Name = name;

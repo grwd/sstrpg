@@ -125,7 +125,9 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\_Scripts\ColliderManager.cs" />
      <Compile Include="Assets\_Scripts\ComboBox.cs" />
-     <Compile Include="Assets\_Scripts\DepthSorting.cs" />
+     <Compile Include="Assets\_Scripts\DepthSortEnvironment.cs" />
+     <Compile Include="Assets\_Scripts\DepthSortObject.cs" />
+     <Compile Include="Assets\_Scripts\DepthSortingManager.cs" />
      <Compile Include="Assets\_Scripts\Dialogue.cs" />
      <Compile Include="Assets\_Scripts\FreePlatformController.cs" />
      <Compile Include="Assets\_Scripts\GroundStatus.cs" />

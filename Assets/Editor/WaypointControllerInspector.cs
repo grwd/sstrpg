@@ -9,6 +9,9 @@ public class WaypointControllerInspector : Editor
 	{
 		WaypointController waypointController = (WaypointController)target;
 		
+		
+		waypointController.Speed = EditorGUILayout.FloatField("Speed", waypointController.Speed);
+		
 		if (waypointController.Waypoints == null)
 			waypointController.Waypoints = new List<WaypointController.Waypoint>();
 		
@@ -132,9 +135,9 @@ public class WaypointControllerInspector : Editor
 				// shift modifier for making straight lines (along x or z axis)
 				else if (Event.current.shift && waypointController.Waypoints.Count > 0)
 				{
-					if (Mathf.Abs(point.x - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x + ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.45f)) < Mathf.Abs(point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z))
+					if (Mathf.Abs(point.x - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x + ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.4142f)) < Mathf.Abs(point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z))
 					{
-						point.x = waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x - ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.45f);
+						point.x = waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x - ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.4142f);
 					}
 					else
 					{
@@ -174,9 +177,9 @@ public class WaypointControllerInspector : Editor
 					// shift modifier for making straight lines (along x or z axis)
 					else if (Event.current.shift && waypointController.Waypoints.Count > 0)
 					{
-						if (Mathf.Abs(point.x - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x + ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.45f)) < Mathf.Abs(point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z))
+						if (Mathf.Abs(point.x - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x + ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.4142f)) < Mathf.Abs(point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z))
 						{
-							point.x = waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x - ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.45f);
+							point.x = waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.x - ((point.z - waypointController.Waypoints[waypointController.Waypoints.Count - 1].Position.z) * 2.4142f);
 						}
 						else
 						{
