@@ -2,10 +2,12 @@
 // Require a character controller to be attached to the same game object
 @script RequireComponent(CharacterController)
 
-public var idleAnimation : AnimationClip;
+public var planeView : GameObject;
+
+/*public var idleAnimation : AnimationClip;
 public var walkAnimation : AnimationClip;
 public var runAnimation : AnimationClip;
-public var jumpPoseAnimation : AnimationClip;
+public var jumpPoseAnimation : AnimationClip;*/
 
 public var walkMaxAnimationSpeed : float = 0.75;
 public var trotMaxAnimationSpeed : float = 1.0;
@@ -104,7 +106,7 @@ public var walkAnimation : AnimationClip;
 public var runAnimation : AnimationClip;
 public var jumpPoseAnimation : AnimationClip;	
 	*/
-	if(!idleAnimation) {
+	/*if(!idleAnimation) {
 		_animation = null;
 		Debug.Log("No idle animation found. Turning off animations.");
 	}
@@ -119,7 +121,7 @@ public var jumpPoseAnimation : AnimationClip;
 	if(!jumpPoseAnimation && canJump) {
 		_animation = null;
 		Debug.Log("No jump animation found and the character has canJump enabled. Turning off animations.");
-	}
+	}*/
 			
 }
 
@@ -318,7 +320,7 @@ function Update() {
 	collisionFlags = controller.Move(movement);
 	
 	// ANIMATION sector
-	if(_animation) {
+	/*if(_animation) {
 		if(_characterState == CharacterState.Jumping) 
 		{
 			if(!jumpingReachedApex) {
@@ -353,8 +355,16 @@ function Update() {
 				
 			}
 		}
-	}
+	}*/
 	// ANIMATION sector
+	
+	if (planeView != null)
+	{
+		if (moveDirection.x > 0)
+			planeView.renderer.material.mainTextureScale.x = -1;
+		else if (moveDirection.x < 0)
+			planeView.renderer.material.mainTextureScale.x = 1;
+	}
 	
 	// Set rotation to the move direction
 	if (IsGrounded())
