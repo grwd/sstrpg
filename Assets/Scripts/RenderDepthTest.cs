@@ -39,7 +39,7 @@ public class RenderDepthTest : MonoBehaviour
 		}
 		
 		if (transObj.renderer != null)
-				transObj.renderer.sharedMaterial.renderQueue = Depth + 3000 + zAdd;
+				transObj.renderer.sharedMaterial.renderQueue = Depth + 3000 + (zAdd * 10);
 		
 		for (int i = 0; i < transObj.childCount; i++)
 		{
