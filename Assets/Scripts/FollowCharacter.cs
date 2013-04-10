@@ -4,6 +4,7 @@ using System.Collections;
 public class FollowCharacter : MonoBehaviour
 {
 	public Transform FollowObject;
+	public bool OnlyFollowZ;
 	
 	private Vector3 _startPos;
 	
@@ -14,6 +15,9 @@ public class FollowCharacter : MonoBehaviour
 	
 	void Update ()
 	{
-		transform.position = FollowObject.position + _startPos;
+		if (OnlyFollowZ)
+			transform.position = new Vector3(_startPos.x, _startPos.y, FollowObject.position.z + _startPos.z);
+		else
+			transform.position = FollowObject.position + _startPos;
 	}
 }
